@@ -70,4 +70,4 @@ echo $[rM] $[rH]  "* * * /sbin/reboot" >> /var/spool/cron/crontabs/root && /etc/
 echo "deny ip:80..."
 sed -i "s:server_name _;:server_name _;\n return 444;:" /usr/local/nginx/conf/nginx.conf
 lnmp nginx restart
-rm -rf *
+#rm -rf *
