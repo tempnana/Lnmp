@@ -6,9 +6,9 @@ apt update && apt upgrade -y
 ##
 apt-get install wget zip unzip git -y
 cd /usr/local
-git clone git://github.com/FRiCKLE/ngx_cache_purge.git
-git clone git://github.com/yaoweibin/ngx_http_substitutions_filter_module
-git clone git://github.com/openresty/headers-more-nginx-module.git
+git clone https://github.com/FRiCKLE/ngx_cache_purge
+git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
+git clone https://github.com/openresty/headers-more-nginx-module
 cd
 wget https://soft.vpser.net/lnmp/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
 cd lnmp1.8/tools
