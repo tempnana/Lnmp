@@ -70,5 +70,10 @@ echo $[rM] $[rH]  "* * * /sbin/reboot" >> /var/spool/cron/root && /sbin/service 
 #deny ip:80
 echo "deny ip:80..."
 sed -i "s:server_name _;:server_name _;\n return 444;:" /usr/local/nginx/conf/nginx.conf
-lnmp nginx restart
-rm -rf *
+#set PHP limit
+sed -i "s:memory_limit = 128M:memory_limit = 512M:" /usr/local/php/etc/php.ini
+sed -i "s:post_max_size = 50M:post_max_size = 5000M:" /usr/local/php/etc/php.ini
+sed -i "s:upload_max_filesize = 50M:upload_max_filesize = 5000M:" /usr/local/php/etc/php.ini
+sed -i "s:max_file_uploads = 20:max_file_uploads = 200:" /usr/local/php/etc/php.ini
+lnmp restart
+#rm -rf *
