@@ -65,7 +65,7 @@ ufw status verbose
 rM=$(($RANDOM%59))
 rH=$(($RANDOM%12))
 echo '#/etc/init.d/cron restart' >> /var/spool/cron/crontabs/root
-echo $[rM] $[rH]  "* * * /sbin/reboot" >> /var/spool/cron/crontabs/root && /etc/init.d/cron restart
+echo '#'$[rM] $[rH]  "* * * /sbin/reboot" >> /var/spool/cron/crontabs/root && /etc/init.d/cron restart
 #deny ip:80
 echo "deny ip:80..."
 sed -i "s:server_name _;:server_name _;\n return 444;:" /usr/local/nginx/conf/nginx.conf
