@@ -76,3 +76,4 @@ sed -i "s:upload_max_filesize = 50M:upload_max_filesize = 5000M:" /usr/local/php
 sed -i "s:max_file_uploads = 20:max_file_uploads = 200:" /usr/local/php/etc/php.ini
 lnmp restart
 #rm -rf *
+mv /etc/cloud/templates/hosts.debian.tmpl /etc/cloud/templates/111.hosts.debian.tmpl
