@@ -19,7 +19,7 @@ echo "Install fail2ban..."
 sleep 3s
 #./install.sh lnmp
 cd ..
-sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--add-module=/usr/local/ngx_http_substitutions_filter_module --add-module=/usr/local/ngx_cache_purge --add-module=/usr/local/headers-more-nginx-module':" lnmp.conf
+sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--with-http_random_index_module --add-module=/usr/local/ngx_http_substitutions_filter_module --add-module=/usr/local/ngx_cache_purge --add-module=/usr/local/headers-more-nginx-module':" lnmp.conf
 chmod +x *.sh
 echo "Choose install:"
 echo ""
