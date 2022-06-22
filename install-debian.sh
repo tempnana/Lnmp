@@ -9,16 +9,19 @@ cd /usr/local
 git clone https://github.com/FRiCKLE/ngx_cache_purge
 git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
 git clone https://github.com/openresty/headers-more-nginx-module
+git clone https://github.com/yaoweibin/nginx_upstream_check_module
 cd
-wget https://soft.vpser.net/lnmp/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
-cd lnmp1.8/tools
+wget https://soft.vpser.net/lnmp/lnmp1.9.tar.gz -cO lnmp1.9.tar.gz && tar zxf lnmp1.9.tar.gz
+wget https://raw.githubusercontent.com/tempnana/Lnmp/main/nginx.sh
+\cp nginx.sh lnmp1.9/include/
+cd lnmp1.9/tools
 sed -i 's#maxretry = 5#maxretry = 2#g' fail2ban.sh
 #./install.sh lnmp
 echo "Install fail2ban..."
 . fail2ban.sh
 sleep 3s
 cd ..
-sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--with-http_random_index_module --add-module=/usr/local/ngx_http_substitutions_filter_module --add-module=/usr/local/ngx_cache_purge --add-module=/usr/local/headers-more-nginx-module':" lnmp.conf
+sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--with-http_random_index_module --add-module=/usr/local/ngx_http_substitutions_filter_module --add-module=/usr/local/ngx_cache_purge --add-module=/usr/local/headers-more-nginx-module --add-module=/usr/local/nginx_upstream_check_module':" lnmp.conf
 chmod +x *.sh
 echo "Choose install:"
 echo ""
