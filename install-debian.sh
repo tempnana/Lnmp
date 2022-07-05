@@ -11,10 +11,10 @@ git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
 git clone https://github.com/openresty/headers-more-nginx-module
 git clone https://github.com/yaoweibin/nginx_upstream_check_module
 cd
-wget https://soft.vpser.net/lnmp/lnmp1.9.tar.gz -cO lnmp1.9.tar.gz && tar zxf lnmp1.9.tar.gz
+wget https://soft.vpser.net/lnmp/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
 wget https://raw.githubusercontent.com/tempnana/Lnmp/main/nginx.sh
-\cp nginx.sh lnmp1.9/include/
-cd lnmp1.9/tools
+\cp nginx.sh lnmp1.8/include/
+cd lnmp1.8/tools
 sed -i 's#maxretry = 5#maxretry = 2#g' fail2ban.sh
 #./install.sh lnmp
 echo "Install fail2ban..."
