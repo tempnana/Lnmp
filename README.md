@@ -29,3 +29,7 @@ sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--add-module=/usr/loca
 #Enter a new Nginx verson number
 #http://nginx.org/
 </pre>
+<br>
+<h2>Source</h2>
+<hr>
+https://github.com/licess/lnmp
