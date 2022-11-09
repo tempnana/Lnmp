@@ -4,7 +4,7 @@
 ###############
 apt update && apt upgrade -y
 ##
-apt-get install wget zip unzip git -y
+apt-get install curl wget net-tools iftop zip unzip git -y
 cd /usr/local
 git clone https://github.com/FRiCKLE/ngx_cache_purge
 git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
