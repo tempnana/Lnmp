@@ -5,10 +5,6 @@
 apt update && apt upgrade -y
 ##
 apt-get install curl wget net-tools iftop zip unzip git -y
-#install sregex to support replace-filter-nginx-module
-git clone https://github.com/openresty/sregex
-cd sregex
-make && make install
 #get module files and lnmp source
 cd /usr/local
 git clone https://github.com/FRiCKLE/ngx_cache_purge
@@ -16,6 +12,10 @@ git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
 git clone https://github.com/openresty/headers-more-nginx-module
 git clone https://github.com/yaoweibin/nginx_upstream_check_module
 git clone https://github.com/openresty/replace-filter-nginx-module
+#install sregex to support replace-filter-nginx-module
+git clone https://github.com/openresty/sregex
+cd sregex
+make && make install
 cd
 #wget https://soft2.vpser.net/lnmp/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
 wget https://github.com/tempnana/Lnmp/raw/main/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
