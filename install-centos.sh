@@ -2,7 +2,7 @@
 ############### 
 #Author:https://github.com/tempnana
 ###############
-yum update && yum upgrade -y
+yum update -y && yum upgrade -y
 ##
 yum install curl wget net-tools iftop zip unzip git -y
 cd /usr/local
