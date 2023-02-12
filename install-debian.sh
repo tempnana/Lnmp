@@ -12,7 +12,6 @@ git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
 git clone https://github.com/openresty/headers-more-nginx-module
 git clone https://github.com/yaoweibin/nginx_upstream_check_module
 git clone https://github.com/openresty/replace-filter-nginx-module
-#install sregex to support replace-filter-nginx-module
 git clone https://github.com/openresty/sregex
 cd sregex
 make && make install
