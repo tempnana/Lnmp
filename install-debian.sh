@@ -14,6 +14,7 @@ git clone https://github.com/yaoweibin/nginx_upstream_check_module
 git clone https://github.com/openresty/replace-filter-nginx-module
 git clone https://github.com/openresty/sregex
 cd sregex
+sleep 2s
 make && make install
 cd
 #wget https://soft2.vpser.net/lnmp/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
