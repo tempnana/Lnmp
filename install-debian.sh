@@ -14,7 +14,7 @@ git clone https://github.com/yaoweibin/nginx_upstream_check_module
 git clone https://github.com/openresty/replace-filter-nginx-module
 git clone https://github.com/openresty/sregex
 cd /usr/local/sregex
-sleep 2s
+sleep 5s
 make && make install
 cd /root
 #wget https://soft2.vpser.net/lnmp/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
@@ -26,7 +26,7 @@ sed -i 's#maxretry = 5#maxretry = 2#g' fail2ban.sh
 #./install.sh lnmp
 echo "Install fail2ban..."
 . fail2ban.sh
-sleep 3s
+sleep 5s
 cd /root/lnmp1.8
 sed -i 's/soft.vpser.net/soft2.vpser.net/g' lnmp.conf
 sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--with-http_random_index_module --add-module=/usr/local/ngx_http_substitutions_filter_module --add-module=/usr/local/ngx_cache_purge --add-module=/usr/local/headers-more-nginx-module --add-module=/usr/local/nginx_upstream_check_module --add-module=/usr/local/replace-filter-nginx-module':" lnmp.conf
