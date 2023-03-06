@@ -14,7 +14,10 @@ git clone https://github.com/openresty/replace-filter-nginx-module
 git clone https://github.com/openresty/sregex
 cd /usr/local/sregex
 sleep 5s
-make && make install
+make
+make install
+ls
+sleep 5s
 cd /root
 #wget https://soft2.vpser.net/lnmp/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
 wget https://github.com/tempnana/Lnmp/raw/main/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
