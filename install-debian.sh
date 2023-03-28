@@ -19,6 +19,7 @@ make
 make install
 ls
 sleep 5s
+cp /root/sregex/libsregex.so.0 /lib/x86_64-linux-gnu/
 cd /root
 #wget https://soft2.vpser.net/lnmp/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
 wget https://github.com/tempnana/Lnmp/raw/main/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
