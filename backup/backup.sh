@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
-
+#01 00 * * * bash /home/backup/backup.sh
 #Funciont: Backup website and mysql database
 #Author: licess
 #Website: https://lnmp.org
-#SSH Key
 #IMPORTANT!!!Please Setting the following Values!
-
+cd "$(dirname "$0")"
 Backup_Home="/home/backup/"
 MySQL_Dump="/usr/local/mysql/bin/mysqldump"
 ######~Set Directory you want to backup~######
@@ -30,9 +29,11 @@ FTP_Dir="backup"
 #Values Setting END!
 
 TodayWWWBackup=www-*-$(date +"%Y%m%d").tar.gz
-TodayDBBackup=db-*-$(date +"%Y%m%d").sql
+#TodayDBBackup=db-*-$(date +"%Y%m%d").sql
+TodayDBBackup=db-*-$(date +"%Y%m%d").sql.gz
 OldWWWBackup=www-*-$(date -d -3day +"%Y%m%d").tar.gz
-OldDBBackup=db-*-$(date -d -3day +"%Y%m%d").sql
+#OldDBBackup=db-*-$(date -d -3day +"%Y%m%d").sql
+OldDBBackup=db-*-$(date -d -3day +"%Y%m%d").sql.gz
 
 Backup_Dir()
 {
@@ -43,7 +44,8 @@ Backup_Dir()
 }
 Backup_Sql()
 {
-    ${MySQL_Dump} -u$MYSQL_UserName -p$MYSQL_PassWord $1 > ${Backup_Home}db-$1-$(date +"%Y%m%d").sql
+    # ${MySQL_Dump} -u$MYSQL_UserName -p$MYSQL_PassWord $1 > ${Backup_Home}db-$1-$(date +"%Y%m%d").sql
+    ${MySQL_Dump} -u$MYSQL_UserName -p$MYSQL_PassWord $1 | gzip > ${Backup_Home}db-$1-$(date +"%Y%m%d").sql.gz
 }
 
 if [ ! -f ${MySQL_Dump} ]; then  
@@ -55,9 +57,9 @@ if [ ! -d ${Backup_Home} ]; then
     mkdir -p ${Backup_Home}
 fi
 
-if [ ${Enable_FTP} = 0 ]; then
-    type lftp >/dev/null 2>&1 || { echo >&2 "lftp command not found. Install: centos:yum install lftp,debian/ubuntu:apt-get install lftp."; }
-fi
+#if [ ${Enable_FTP} = 0 ]; then
+ #   type lftp >/dev/null 2>&1 || { echo >&2 "lftp command not found. Install: centos:yum install lftp,debian/ubuntu:apt-get install lftp."; }
+#fi
 
 echo "Backup website files..."
 for dd in ${Backup_Dir[@]};do
@@ -84,5 +86,6 @@ put ${TodayWWWBackup}
 put ${TodayDBBackup}
 bye
 EOF
+
 echo "complete."
 fi
