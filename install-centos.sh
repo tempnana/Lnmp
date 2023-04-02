@@ -88,5 +88,6 @@ sed -i "s:memory_limit = 128M:memory_limit = 512M:" /usr/local/php/etc/php.ini
 sed -i "s:post_max_size = 50M:post_max_size = 5000M:" /usr/local/php/etc/php.ini
 sed -i "s:upload_max_filesize = 50M:upload_max_filesize = 5000M:" /usr/local/php/etc/php.ini
 sed -i "s:max_file_uploads = 20:max_file_uploads = 200:" /usr/local/php/etc/php.ini
+wget https://raw.githubusercontent.com/tempnana/Lnmp/main/my.cnf -0 /etc/my.cnf
 lnmp restart
 #rm -rf *
