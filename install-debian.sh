@@ -17,6 +17,7 @@ ls
 #ldd $(which /usr/sbin/nginx)
 cp /usr/local/sregex/libsregex.so.0 /lib/x86_64-linux-gnu/
 sleep 5s
+cd /usr/local
 git clone https://github.com/FRiCKLE/ngx_cache_purge
 git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
 git clone https://github.com/openresty/headers-more-nginx-module
