@@ -9,6 +9,7 @@ apt-get install curl wget net-tools iftop zip unzip git -y
 cd /usr/local
 git clone https://github.com/openresty/sregex
 cd /usr/local/sregex
+echo 'Waiting make install sregex...'
 sleep 5s
 make
 make install
