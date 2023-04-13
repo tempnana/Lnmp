@@ -10,12 +10,12 @@ cd /usr/local
 git clone https://github.com/openresty/sregex
 cd /usr/local/sregex
 echo 'Waiting make install sregex...'
-sleep 5s
 make
+sleep 5s
 make install
 ls
 #ldd $(which /usr/sbin/nginx)
-cp /usr/local/sregex/libsregex.so.0 /lib/x86_64-linux-gnu/
+#cp /usr/local/sregex/libsregex.so.0 /lib/x86_64-linux-gnu/
 sleep 5s
 cd /usr/local
 git clone https://github.com/FRiCKLE/ngx_cache_purge
