@@ -33,3 +33,12 @@ sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--add-module=/usr/loca
 <h2>Source</h2>
 <hr>
 https://github.com/licess/lnmp
+<br>
+<h2>Related fixes</h2>
+<hr>
+<pre>
+#make: bison: Command not found
+https://askubuntu.com/questions/557629/how-to-install-flex-and-bison-error-can-not-locate-file
+#Command 'make' not found
+https://itsfoss.com/make-command-not-found-ubuntu/
+</pre>
