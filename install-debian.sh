@@ -7,22 +7,10 @@ apt update && apt upgrade -y
 apt-get install curl wget net-tools iftop zip unzip git -y
 #get module files and lnmp source
 cd /usr/local
-git clone https://github.com/openresty/sregex
-cd /usr/local/sregex
-echo 'Waiting make install sregex...'
-make
-sleep 5s
-make install
-ls
-#ldd $(which /usr/sbin/nginx)
-#cp /usr/local/sregex/libsregex.so.0 /lib/x86_64-linux-gnu/
-sleep 5s
-cd /usr/local
 git clone https://github.com/FRiCKLE/ngx_cache_purge
 git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
 git clone https://github.com/openresty/headers-more-nginx-module
 git clone https://github.com/yaoweibin/nginx_upstream_check_module
-git clone https://github.com/openresty/replace-filter-nginx-module
 cd /root
 #wget https://soft2.vpser.net/lnmp/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
 wget https://github.com/tempnana/Lnmp/raw/main/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
@@ -36,7 +24,7 @@ echo "Install fail2ban..."
 sleep 5s
 cd /root/lnmp1.8
 sed -i 's/soft.vpser.net/soft2.vpser.net/g' lnmp.conf
-sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--with-http_random_index_module --add-module=/usr/local/ngx_http_substitutions_filter_module --add-module=/usr/local/ngx_cache_purge --add-module=/usr/local/headers-more-nginx-module --add-module=/usr/local/nginx_upstream_check_module --add-module=/usr/local/replace-filter-nginx-module':" lnmp.conf
+sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--with-http_random_index_module --add-module=/usr/local/ngx_http_substitutions_filter_module --add-module=/usr/local/ngx_cache_purge --add-module=/usr/local/headers-more-nginx-module --add-module=/usr/local/nginx_upstream_check_module':" lnmp.conf
 chmod +x *.sh
 echo "Choose install:"
 echo ""
