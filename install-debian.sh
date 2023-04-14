@@ -84,3 +84,5 @@ wget https://raw.githubusercontent.com/tempnana/Lnmp/main/my.cnf -0 /etc/my.cnf
 lnmp restart
 #rm -rf *
 mv /etc/cloud/templates/hosts.debian.tmpl /etc/cloud/templates/111.hosts.debian.tmpl
+echo 'Add replace-filter-nginx-module:'
+echo 'bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/add-replace-filter-nginx-module.sh)'
