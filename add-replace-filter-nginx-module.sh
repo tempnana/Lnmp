@@ -17,7 +17,7 @@ if [ ! -f "libsregex.so.0" ];then
 fi
 ls
 #ldd $(which /usr/sbin/nginx)
-#cp /usr/local/sregex/libsregex.so.0 /lib/x86_64-linux-gnu/
+cp /usr/local/sregex/libsregex.so.0 /lib/x86_64-linux-gnu/
 sleep 5s
 #get replace-filter-nginx-module
 cd /usr/local
