@@ -25,6 +25,7 @@ sleep 5s
 cd /root/lnmp1.8
 sed -i 's/soft.vpser.net/soft2.vpser.net/g' lnmp.conf
 sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--with-http_random_index_module --add-module=/usr/local/ngx_http_substitutions_filter_module --add-module=/usr/local/ngx_cache_purge --add-module=/usr/local/headers-more-nginx-module --add-module=/usr/local/nginx_upstream_check_module':" lnmp.conf
+sed -i "s:Enable_Nginx_Lua='n':Enable_Nginx_Lua='y':" lnmp.conf
 chmod +x *.sh
 echo "Choose install:"
 echo ""
