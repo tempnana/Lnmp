@@ -75,7 +75,8 @@ echo '#/sbin/service crond start' >> /var/spool/cron/root
 echo '#'$[rM] $[rH]  "* * * /sbin/reboot" >> /var/spool/cron/root && /sbin/service crond start
 #deny ip:80
 echo "deny ip:80..."
-sed -i "s:server_name _;:server_name _;\n return 444;:" /usr/local/nginx/conf/nginx.conf
+localip=$(ip r | awk 'END{print $NF}')
+sed -i "s:server_name _;:server_name ${localip};\n return 444;:" /usr/local/nginx/conf/nginx.conf
 #set PHP limit
 sed -i "s:memory_limit = 128M:memory_limit = 2048M:" /usr/local/php/etc/php.ini
 sed -i "s:post_max_size = 50M:post_max_size = 5000M:" /usr/local/php/etc/php.ini
