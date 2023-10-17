@@ -4,7 +4,7 @@
 ###############
 apt update && apt upgrade -y
 ##
-apt-get install curl wget net-tools iftop zip unzip git -y
+apt-get install curl wget net-tools iftop zip unzip git lsof -y
 #get module files and lnmp source
 cd /usr/local
 git clone https://github.com/FRiCKLE/ngx_cache_purge
