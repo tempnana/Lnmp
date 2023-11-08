@@ -10,6 +10,7 @@ git clone https://github.com/FRiCKLE/ngx_cache_purge
 git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
 git clone https://github.com/openresty/headers-more-nginx-module
 git clone https://github.com/yaoweibin/nginx_upstream_check_module
+git clone https://github.com/replay/ngx_http_lower_upper_case
 cd /root
 #wget https://soft2.vpser.net/lnmp/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
 wget https://github.com/tempnana/Lnmp/raw/main/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
@@ -24,7 +25,7 @@ sleep 5s
 #./install.sh lnmp
 cd /root/lnmp1.8
 sed -i 's/soft.vpser.net/soft2.vpser.net/g' lnmp.conf
-sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--with-http_random_index_module --add-module=/usr/local/ngx_http_substitutions_filter_module --add-module=/usr/local/ngx_cache_purge --add-module=/usr/local/headers-more-nginx-module --add-module=/usr/local/nginx_upstream_check_module':" lnmp.conf
+sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--with-http_random_index_module --add-module=/usr/local/ngx_http_substitutions_filter_module --add-module=/usr/local/ngx_cache_purge --add-module=/usr/local/headers-more-nginx-module --add-module=/usr/local/nginx_upstream_check_module --add-module=/usr/local/ngx_http_lower_upper_case':" lnmp.conf
 sed -i "s/Enable_Nginx_Lua='n'/Enable_Nginx_Lua='y'/g" lnmp.conf
 chmod +x *.sh
 echo "Choose install:"
