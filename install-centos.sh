@@ -30,7 +30,7 @@ sleep 5s
 
 # # set replace
 cd /root/lnmp2.0
-wget https://raw.githubusercontent.com/tempnana/Lnmp/main/nginx.sh -0 /root/lnmp2.0/include/nginx.sh
+wget https://raw.githubusercontent.com/tempnana/Lnmp/main/nginx.sh -O /root/lnmp2.0/include/nginx.sh
 sed -i 's/soft.vpser.net/soft2.vpser.net/g' lnmp.conf
 sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--with-http_random_index_module --add-module=/root/lnmp2.0/src-c/ngx_http_substitutions_filter_module --add-module=/root/lnmp2.0/src-c/ngx_cache_purge --add-module=/root/lnmp2.0/src-c/headers-more-nginx-module --add-module=/root/lnmp2.0/src-c/nginx_upstream_check_module --add-module=/root/lnmp2.0/src-c/ngx_http_lower_upper_case':" lnmp.conf
 sed -i "s/Enable_Nginx_Lua='n'/Enable_Nginx_Lua='y'/g" lnmp.conf
@@ -92,7 +92,7 @@ sed -i "s:memory_limit = 128M:memory_limit = 2048M:" /usr/local/php/etc/php.ini
 sed -i "s:post_max_size = 50M:post_max_size = 5000M:" /usr/local/php/etc/php.ini
 sed -i "s:upload_max_filesize = 50M:upload_max_filesize = 5000M:" /usr/local/php/etc/php.ini
 sed -i "s:max_file_uploads = 20:max_file_uploads = 200:" /usr/local/php/etc/php.ini
-wget https://raw.githubusercontent.com/tempnana/Lnmp/main/my.cnf -0 /etc/my.cnf
+wget https://raw.githubusercontent.com/tempnana/Lnmp/main/my.cnf -O /etc/my.cnf
 lnmp restart
 
 echo 'Add replace-filter-nginx-module:'
