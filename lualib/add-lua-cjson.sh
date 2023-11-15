@@ -2,6 +2,7 @@
 ############### 
 #Author: https://github.com/tempnana
 #Source: https://github.com/openresty/lua-cjson
+#See: https://junglone.gitbooks.io/start-with-nginx-lua/content/nginx-luakai-fa-huan-jing-da-jian.html
 ###############
 ## bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/lualib/add-lua-cjson.sh)
 ###############
