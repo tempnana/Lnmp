@@ -2,31 +2,39 @@
 ############### 
 #Author:https://github.com/tempnana
 ###############
+
+# # install tools
 yum update -y && yum upgrade -y
-##
 yum install curl wget net-tools iftop zip unzip git epel-release lsof -y
-cd /usr/local
+
+# # get script file
+cd /root
+wget https://github.com/tempnana/Lnmp/raw/main/lnmp2.0.tar.gz -cO lnmp2.0.tar.gz && tar zxf lnmp2.0.tar.gz
+
+# # get module file
+mkdir /root/lnmp2.0/src-c
+cd /root/lnmp2.0/src-c
 git clone https://github.com/FRiCKLE/ngx_cache_purge
 git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
 git clone https://github.com/openresty/headers-more-nginx-module
 git clone https://github.com/yaoweibin/nginx_upstream_check_module
 git clone https://github.com/replay/ngx_http_lower_upper_case
-cd /root
-#wget https://soft2.vpser.net/lnmp/lnmp2.0.tar.gz -cO lnmp2.0.tar.gz && tar zxf lnmp2.0.tar.gz
-wget https://github.com/tempnana/Lnmp/raw/main/lnmp2.0.tar.gz -cO lnmp2.0.tar.gz && tar zxf lnmp2.0.tar.gz
-wget https://raw.githubusercontent.com/tempnana/Lnmp/main/nginx.sh
-\cp nginx.sh lnmp2.0/include/
+
+# # install fail2ban
 cd /root/lnmp2.0/tools
 sed -i 's#maxretry = 5#maxretry = 2#g' fail2ban.sh
-#./install.sh lnmp
 echo "Install fail2ban..."
 . fail2ban.sh
 sleep 5s
-#./install.sh lnmp
+
+# # set replace
 cd /root/lnmp2.0
+wget https://raw.githubusercontent.com/tempnana/Lnmp/main/nginx.sh -0 /root/lnmp2.0/include/nginx.sh
 sed -i 's/soft.vpser.net/soft2.vpser.net/g' lnmp.conf
-sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--with-http_random_index_module --add-module=/usr/local/ngx_http_substitutions_filter_module --add-module=/usr/local/ngx_cache_purge --add-module=/usr/local/headers-more-nginx-module --add-module=/usr/local/nginx_upstream_check_module --add-module=/usr/local/ngx_http_lower_upper_case':" lnmp.conf
+sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--with-http_random_index_module --add-module=/root/lnmp2.0/src-c/ngx_http_substitutions_filter_module --add-module=/root/lnmp2.0/src-c/ngx_cache_purge --add-module=/root/lnmp2.0/src-c/headers-more-nginx-module --add-module=/root/lnmp2.0/src-c/nginx_upstream_check_module --add-module=/root/lnmp2.0/src-c/ngx_http_lower_upper_case':" lnmp.conf
 sed -i "s/Enable_Nginx_Lua='n'/Enable_Nginx_Lua='y'/g" lnmp.conf
+
+# # install lnmp
 chmod +x *.sh
 echo "Choose install:"
 echo ""
@@ -51,15 +59,10 @@ else
     echo "Install canceled."
     exit
 fi
-#Install fail2ban
-#echo "Install fail2ban..."
-#cd tools
-#. fail2ban.sh
-#sleep 3s
+
+# # install ufw
 cd /root
-#ufw
 echo "Install ufw..."
-#yum install ufw -y
 yum install --enablerepo="epel" ufw -y
 #Default set: deny all IN and allow all OUT
 ufw default deny incoming
@@ -70,22 +73,26 @@ ufw allow 80
 ufw --force enable
 #Status checking
 ufw status verbose
-#crontab
+
+
+# # set crontab
 rM=$(($RANDOM%59))
 rH=$(($RANDOM%12))
 echo '#/sbin/service crond start' >> /var/spool/cron/root
 echo '#'$[rM] $[rH]  "* * * /sbin/reboot" >> /var/spool/cron/root && /sbin/service crond start
-#deny ip:80
+
+# # deny ip:80
 echo "deny ip:80..."
 localip=$(hostname -I)
 sed -i "s:server_name _;:server_name ${localip};\n return 444;:" /usr/local/nginx/conf/nginx.conf
-#set PHP limit
+
+# # set PHP limit
 sed -i "s:memory_limit = 128M:memory_limit = 2048M:" /usr/local/php/etc/php.ini
 sed -i "s:post_max_size = 50M:post_max_size = 5000M:" /usr/local/php/etc/php.ini
 sed -i "s:upload_max_filesize = 50M:upload_max_filesize = 5000M:" /usr/local/php/etc/php.ini
 sed -i "s:max_file_uploads = 20:max_file_uploads = 200:" /usr/local/php/etc/php.ini
 wget https://raw.githubusercontent.com/tempnana/Lnmp/main/my.cnf -0 /etc/my.cnf
 lnmp restart
-#rm -rf *
+
 echo 'Add replace-filter-nginx-module:'
 echo 'bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/add-replace-filter-nginx-module.sh)'
