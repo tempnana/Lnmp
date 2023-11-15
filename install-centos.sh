@@ -1,6 +1,7 @@
 #!/bin/bash
 ############### 
 #Author:https://github.com/tempnana
+#Source:https://github.com/lnmpkvemail/lnmp
 ###############
 
 # # install tools
