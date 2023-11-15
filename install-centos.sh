@@ -4,7 +4,7 @@
 ###############
 yum update -y && yum upgrade -y
 ##
-yum install curl wget net-tools iftop zip unzip git epel-release lsof luarocks lua-devel -y
+yum install curl wget net-tools iftop zip unzip git epel-release lsof -y
 cd /usr/local
 git clone https://github.com/FRiCKLE/ngx_cache_purge
 git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
@@ -12,18 +12,18 @@ git clone https://github.com/openresty/headers-more-nginx-module
 git clone https://github.com/yaoweibin/nginx_upstream_check_module
 git clone https://github.com/replay/ngx_http_lower_upper_case
 cd /root
-#wget https://soft2.vpser.net/lnmp/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
-wget https://github.com/tempnana/Lnmp/raw/main/lnmp1.8.tar.gz -cO lnmp1.8.tar.gz && tar zxf lnmp1.8.tar.gz
+#wget https://soft2.vpser.net/lnmp/lnmp2.0.tar.gz -cO lnmp2.0.tar.gz && tar zxf lnmp2.0.tar.gz
+wget https://github.com/tempnana/Lnmp/raw/main/lnmp2.0.tar.gz -cO lnmp2.0.tar.gz && tar zxf lnmp2.0.tar.gz
 wget https://raw.githubusercontent.com/tempnana/Lnmp/main/nginx.sh
-\cp nginx.sh lnmp1.8/include/
-cd /root/lnmp1.8/tools
+\cp nginx.sh lnmp2.0/include/
+cd /root/lnmp2.0/tools
 sed -i 's#maxretry = 5#maxretry = 2#g' fail2ban.sh
 #./install.sh lnmp
 echo "Install fail2ban..."
 . fail2ban.sh
 sleep 5s
 #./install.sh lnmp
-cd /root/lnmp1.8
+cd /root/lnmp2.0
 sed -i 's/soft.vpser.net/soft2.vpser.net/g' lnmp.conf
 sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--with-http_random_index_module --add-module=/usr/local/ngx_http_substitutions_filter_module --add-module=/usr/local/ngx_cache_purge --add-module=/usr/local/headers-more-nginx-module --add-module=/usr/local/nginx_upstream_check_module --add-module=/usr/local/ngx_http_lower_upper_case':" lnmp.conf
 sed -i "s/Enable_Nginx_Lua='n'/Enable_Nginx_Lua='y'/g" lnmp.conf
