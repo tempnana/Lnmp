@@ -18,3 +18,4 @@ cp /usr/lib64/lua/5.1/cjson.so /usr/local/nginx/lib/lua/
 # # Nginx:      
 # lua_package_cpath "/usr/local/nginx/lib/lua/?.so";
 sed -i 's#lua_package_path "/usr/local/nginx/lib/lua/?.lua";#lua_package_path "/usr/local/nginx/lib/lua/?.lua";\nlua_package_cpath "/usr/local/nginx/lib/lua/?.so";#g' /usr/local/nginx/conf/nginx.conf
+lnmp nginx restart
