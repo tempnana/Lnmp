@@ -26,7 +26,6 @@ wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/fail2ban.sh -O 
 wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/version.sh -O /root/lnmp2.0/include/version.sh
 wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/nginx.sh -O /root/lnmp2.0/include/nginx.sh
 wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/upgrade_nginx.sh -O /root/lnmp2.0/include/upgrade_nginx.sh
-wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/lnmp.conf -O /root/lnmp2.0/lnmp.conf
 
 
 # # install fail2ban
@@ -87,13 +86,4 @@ echo "deny ip:80..."
 localip=$(hostname -I)
 sed -i "s:server_name _;:server_name ${localip};\n return 444;:" /usr/local/nginx/conf/nginx.conf
 
-# # set PHP limit
-sed -i "s:memory_limit = 128M:memory_limit = 2048M:" /usr/local/php/etc/php.ini
-sed -i "s:post_max_size = 50M:post_max_size = 5000M:" /usr/local/php/etc/php.ini
-sed -i "s:upload_max_filesize = 50M:upload_max_filesize = 5000M:" /usr/local/php/etc/php.ini
-sed -i "s:max_file_uploads = 20:max_file_uploads = 200:" /usr/local/php/etc/php.ini
-wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/my.cnf -O /etc/my.cnf
 lnmp restart
-
-echo 'Add replace-filter-nginx-module:'
-echo 'bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/add-replace-filter-nginx-module.sh)'
