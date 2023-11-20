@@ -1,26 +1,41 @@
 #!/bin/bash
 ############### 
-#Author:https://github.com/tempnana
+#Author: https://github.com/tempnana
+#Source: https://www.modpagespeed.com/doc/build_ngx_pagespeed_from_source
+#Note: Support last nginx version is 1.22.1
 ###############
-##https://www.techrepublic.com/article/how-to-install-google-pagespeed-to-improve-nginx-performance/
-##https://www.moewah.com/archives/3705.html
-# CentOS 7
-# yum install gcc-c++ pcre-devel zlib-devel make unzip libuuid-devel
-# Ubuntu / Debian
-apt-get install build-essential zlib1g-dev libpcre3 libpcre3-dev unzip uuid-dev -y
-wget https://raw.githubusercontent.com/tempnana/Lnmp/main/files/pagespeed/add.pagespeed.conf -O /usr/local/nginx/conf/add.pagespeed.conf
-# "include add.pagespeed.conf;" on server{}
-cd /usr/local
-git clone https://github.com/apache/incubator-pagespeed-ngx.git
-cd /usr/local/incubator-pagespeed-ngx
-git checkout latest-stable
-#wget https://github.com/tempnana/Lnmp/raw/main/files/pagespeed/1.13.35.2-x64.tar.gz
-wget https://dl.google.com/dl/page-speed/psol/1.13.35.2-x64.tar.gz
-tar xvf 1.13.35.2-x64.tar.gz
-sleep 5s
-#Re-install nginx
-cd /root/lnmp1.8
-sed -i "s:Nginx_Modules_Options=':Nginx_Modules_Options='--add-module=/usr/local/incubator-pagespeed-ngx :" lnmp.conf
-chmod +x *.sh
-echo 'Re-install Nginx to support "pagespeed-ngx-module"'
-./upgrade.sh nginx
+update_DEBIAN() {
+    apt update && apt upgrade -y
+    apt-get install build-essential zlib1g-dev libpcre3 libpcre3-dev unzip uuid-dev
+}
+update_CENTOS() {
+    yum update -y
+    yum upgrade -y
+    yum install gcc-c++ pcre-devel zlib-devel make unzip libuuid-devel -y
+}
+#
+install_pagespeed() {
+    cd /root/lnmp2.0/src-c
+    NPS_VERSION=1.13.35.2-stable
+    wget -O- https://github.com/apache/incubator-pagespeed-ngx/archive/v${NPS_VERSION}.tar.gz | tar -xz
+    nps_dir=$(find . -name "*pagespeed-ngx-${NPS_VERSION}" -type d)
+    cd "$nps_dir"
+    NPS_RELEASE_NUMBER=${NPS_VERSION/beta/}
+    NPS_RELEASE_NUMBER=${NPS_VERSION/stable/}
+    psol_url=https://dl.google.com/dl/page-speed/psol/${NPS_RELEASE_NUMBER}.tar.gz
+    [ -e scripts/format_binary_url.sh ] && psol_url=$(scripts/format_binary_url.sh PSOL_BINARY_URL)
+    wget -O- ${psol_url} | tar -xz
+    cd /root/lnmp2.0
+    sed -i "s:Nginx_Modules_Options=':Nginx_Modules_Options='--add-module=/root/lnmp2.0/src-t/incubator-pagespeed-ngx-1.13.35.2-stable :" lnmp.conf
+    ./upgrade.sh nginx
+}
+
+if [ -f /etc/debian_version ]; then
+    update_DEBIAN
+    install_pagespeed
+elif [ -f /etc/centos-release ]; then
+    update_CENTOS
+    install_pagespeed
+else
+    echo "Unsupported distribution."
+fi
