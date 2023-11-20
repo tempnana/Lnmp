@@ -1,7 +1,7 @@
 #!/bin/bash
 ###############
 #Author: https://github.com/tempnana
-#bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/add/add-lib-lua-cjson.sh)
+#bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/change/reset.sh)
 ###############
 
 # # reset PHP limit
