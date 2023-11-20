@@ -21,13 +21,6 @@ git clone https://github.com/openresty/headers-more-nginx-module
 git clone https://github.com/yaoweibin/nginx_upstream_check_module
 git clone https://github.com/replay/ngx_http_lower_upper_case
 
-# # install fail2ban
-wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/fail2ban.sh -O /root/lnmp2.0/tools
-cd /root/lnmp2.0/tools
-echo "Install fail2ban..."
-. fail2ban.sh
-sleep 5s
-
 # # set replace
 cd /root/lnmp2.0
 wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/version.sh -O /root/lnmp2.0/include/version.sh
@@ -37,6 +30,13 @@ wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/upgrade_nginx.s
 sed -i 's/soft.vpser.net/soft2.vpser.net/g' lnmp.conf
 sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--with-http_random_index_module --add-module=/root/lnmp2.0/src-c/ngx_http_substitutions_filter_module --add-module=/root/lnmp2.0/src-c/ngx_cache_purge --add-module=/root/lnmp2.0/src-c/headers-more-nginx-module --add-module=/root/lnmp2.0/src-c/nginx_upstream_check_module --add-module=/root/lnmp2.0/src-c/ngx_http_lower_upper_case':" lnmp.conf
 sed -i "s/Enable_Nginx_Lua='n'/Enable_Nginx_Lua='y'/g" lnmp.conf
+
+# # install fail2ban
+cd /root/lnmp2.0/tools
+wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/fail2ban.sh -O /root/lnmp2.0/tools
+echo "Install fail2ban..."
+. fail2ban.sh
+sleep 5s
 
 # # install lnmp
 chmod +x *.sh
