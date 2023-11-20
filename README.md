@@ -3,6 +3,11 @@ Lnmp
 
 <h2>Install:</h2>
 <br>
+<b>#Debian 9+ / CentOS 7+</b><br>
+<pre>
+bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/install.sh)
+</pre>
+<br>
 <b>#Debian9/10</b><br>
 <pre>
 bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/install-debian.sh)
