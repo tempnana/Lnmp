@@ -3,7 +3,6 @@
 #Author: https://github.com/tempnana
 #Source: https://github.com/lnmpkvemail/lnmp
 ###############
-
 if [ -f /etc/debian_version ]; then
     update_install() {
         apt update && apt upgrade -y
@@ -47,6 +46,7 @@ wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/fail2ban.sh -O 
 wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/version.sh -O /root/lnmp2.0/include/version.sh
 wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/nginx.sh -O /root/lnmp2.0/include/nginx.sh
 wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/upgrade_nginx.sh -O /root/lnmp2.0/include/upgrade_nginx.sh
+wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/lnmp.conf -O /root/lnmp2.0/lnmp.conf
 
 
 # # install fail2ban
