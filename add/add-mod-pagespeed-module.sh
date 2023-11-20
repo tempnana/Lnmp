@@ -27,7 +27,7 @@ install_pagespeed() {
     [ -e scripts/format_binary_url.sh ] && psol_url=$(scripts/format_binary_url.sh PSOL_BINARY_URL)
     wget -O- ${psol_url} | tar -xz
     cd /root/lnmp2.0
-    sed -i "s:Nginx_Modules_Options=':Nginx_Modules_Options='--add-module=/root/lnmp2.0/src-t/incubator-pagespeed-ngx-1.13.35.2-stable :" lnmp.conf
+    sed -i "s:Nginx_Modules_Options=':Nginx_Modules_Options='--add-module=/root/lnmp2.0/src-c/incubator-pagespeed-ngx-1.13.35.2-stable :" lnmp.conf
     ./upgrade.sh nginx
 }
 
