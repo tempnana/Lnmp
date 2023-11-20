@@ -22,23 +22,20 @@ git clone https://github.com/yaoweibin/nginx_upstream_check_module
 git clone https://github.com/replay/ngx_http_lower_upper_case
 
 # # set replace
-cd /root/lnmp2.0
+wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/fail2ban.sh -O /root/lnmp2.0/tools
 wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/version.sh -O /root/lnmp2.0/include/version.sh
 wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/nginx.sh -O /root/lnmp2.0/include/nginx.sh
 wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/upgrade_nginx.sh -O /root/lnmp2.0/include/upgrade_nginx.sh
 
-sed -i 's/soft.vpser.net/soft2.vpser.net/g' lnmp.conf
-sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--with-http_random_index_module --add-module=/root/lnmp2.0/src-c/ngx_http_substitutions_filter_module --add-module=/root/lnmp2.0/src-c/ngx_cache_purge --add-module=/root/lnmp2.0/src-c/headers-more-nginx-module --add-module=/root/lnmp2.0/src-c/nginx_upstream_check_module --add-module=/root/lnmp2.0/src-c/ngx_http_lower_upper_case':" lnmp.conf
-sed -i "s/Enable_Nginx_Lua='n'/Enable_Nginx_Lua='y'/g" lnmp.conf
 
 # # install fail2ban
 cd /root/lnmp2.0/tools
-wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/fail2ban.sh -O /root/lnmp2.0/tools
 echo "Install fail2ban..."
 . fail2ban.sh
 sleep 5s
 
 # # install lnmp
+cd /root/lnmp2.0
 chmod +x *.sh
 echo "Choose install:"
 echo ""
@@ -67,7 +64,7 @@ fi
 # # install ufw
 cd /root
 echo "Install ufw..."
-yum install --enablerepo="epel" ufw -y
+apt install ufw -y
 #Default set: deny all IN and allow all OUT
 ufw default deny incoming
 ufw default allow outgoing
@@ -77,7 +74,6 @@ ufw allow 80
 ufw --force enable
 #Status checking
 ufw status verbose
-
 
 # # set crontab
 rM=$(($RANDOM%59))
@@ -90,13 +86,4 @@ echo "deny ip:80..."
 localip=$(hostname -I)
 sed -i "s:server_name _;:server_name ${localip};\n return 444;:" /usr/local/nginx/conf/nginx.conf
 
-# # set PHP limit
-sed -i "s:memory_limit = 128M:memory_limit = 2048M:" /usr/local/php/etc/php.ini
-sed -i "s:post_max_size = 50M:post_max_size = 5000M:" /usr/local/php/etc/php.ini
-sed -i "s:upload_max_filesize = 50M:upload_max_filesize = 5000M:" /usr/local/php/etc/php.ini
-sed -i "s:max_file_uploads = 20:max_file_uploads = 200:" /usr/local/php/etc/php.ini
-wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/my.cnf -O /etc/my.cnf
 lnmp restart
-
-echo 'Add replace-filter-nginx-module:'
-echo 'bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/add-replace-filter-nginx-module.sh)'
