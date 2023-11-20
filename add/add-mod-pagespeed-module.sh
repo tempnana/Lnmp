@@ -7,7 +7,7 @@
 ###############
 update_DEBIAN() {
     apt update && apt upgrade -y
-    apt-get install build-essential zlib1g-dev libpcre3 libpcre3-dev unzip uuid-dev
+    apt-get install build-essential zlib1g-dev libpcre3 libpcre3-dev unzip uuid-dev -y
 }
 update_CENTOS() {
     yum update -y
