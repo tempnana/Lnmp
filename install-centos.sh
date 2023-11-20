@@ -22,8 +22,8 @@ git clone https://github.com/yaoweibin/nginx_upstream_check_module
 git clone https://github.com/replay/ngx_http_lower_upper_case
 
 # # install fail2ban
+wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/fail2ban.sh -O /root/lnmp2.0/tools
 cd /root/lnmp2.0/tools
-sed -i 's#maxretry = 5#maxretry = 2#g' fail2ban.sh
 echo "Install fail2ban..."
 . fail2ban.sh
 sleep 5s
