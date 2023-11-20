@@ -98,7 +98,7 @@ set_crontab
 
 # # deny ip:80
 echo "deny ip:80..."
-localip=$(hostname -I)
-sed -i "s:server_name _;:server_name ${localip};\n return 444;:" /usr/local/nginx/conf/nginx.conf
+local_ip=$(hostname -I | awk '{print $1}')
+sed -i "s:server_name _;:server_name ${local_ip};\n return 444;:" /usr/local/nginx/conf/nginx.conf
 
 lnmp restart
