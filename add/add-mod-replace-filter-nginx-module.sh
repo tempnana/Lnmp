@@ -2,6 +2,7 @@
 ############### 
 #Author: https://github.com/tempnana
 #Source: https://github.com/openresty/sregex
+#bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/add/add-mod-replace-filter-nginx-module.sh)
 ###############
 ##
 #make install sregex
