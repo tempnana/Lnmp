@@ -8,15 +8,6 @@ Lnmp
 bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/install.sh)
 </pre>
 <br>
-<b>#Debian9/10</b><br>
-<pre>
-bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/install-debian.sh)
-</pre>
-<b>#Centos7+</b><br>
-<pre>
-bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/install-centos.sh)
-</pre>
-
 <br>
 <h2>Add</h2>
 <hr>
