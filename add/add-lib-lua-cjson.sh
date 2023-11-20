@@ -1,9 +1,10 @@
 #!/bin/bash
 ###############
 #Author: https://github.com/tempnana
+#bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/add/add-lib-lua-cjson.sh)
 ###############
 
-add_to__CENTOS() {
+add_to_CENTOS() {
     yum install luarocks lua-devel -y
     luarocks install lua-cjson
 
@@ -23,4 +24,4 @@ add_to__CENTOS() {
     sed -i 's#lua_package_path "/usr/local/nginx/lib/lua/?.lua";#lua_package_path "/usr/local/nginx/lib/lua/?.lua";\nlua_package_cpath "/usr/local/nginx/lib/lua/?.so";#g' /usr/local/nginx/conf/nginx.conf
     lnmp nginx restart
 }
-add_to__CENTOS
+add_to_CENTOS
