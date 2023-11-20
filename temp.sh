@@ -1,3 +1,5 @@
+yum install luarocks lua-devel -y
+
 luarocks install lua-cjson
 luarocks show lua-cjson
 
