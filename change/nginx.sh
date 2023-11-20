@@ -111,7 +111,7 @@ Install_Nginx()
     if gcc -dumpversion|grep -q "^[8]" && [ "${Nginx_Ver_Com}" == "1" ]; then
         patch -p1 < ${cur_dir}/src/patch/nginx-gcc8.patch
     fi
-    patch -p1 <  /root/lnmp2.0/src-t/nginx_upstream_check_module/check_1.20.1+.patch
+    patch -p1 <  /root/lnmp2.0/src-c/nginx_upstream_check_module/check_1.20.1+.patch
     Nginx_Ver_Com=$(${cur_dir}/include/version_compare 1.9.4 ${Nginx_Version})
     if [[ "${Nginx_Ver_Com}" == "0" ||  "${Nginx_Ver_Com}" == "1" ]]; then
         ./configure --user=www --group=www --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_spdy_module --with-http_gzip_static_module --with-ipv6 --with-http_sub_module --with-http_realip_module ${Nginx_With_Openssl} ${Nginx_With_Pcre} ${Nginx_Module_Lua} ${NginxMAOpt} ${Ngx_FancyIndex} ${Nginx_Modules_Options}
