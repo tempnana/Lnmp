@@ -76,6 +76,7 @@ Upgrade_Nginx()
     echo "upgrade..."
     make upgrade
 
+    cd ${cur_dir} && \cp -r ${cur_dir}/src/nginx-${Nginx_Version} ${cur_dir}/src/nginx-${Nginx_Version}.bak
     cd ${cur_dir} && rm -rf ${cur_dir}/src/nginx-${Nginx_Version}
     if [ "${Enable_Nginx_Lua}" = 'y' ]; then
         if ! grep -q 'lua_package_path "/usr/local/nginx/lib/lua/?.lua";' /usr/local/nginx/conf/nginx.conf; then
