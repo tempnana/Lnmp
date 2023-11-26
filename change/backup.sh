@@ -34,7 +34,6 @@ TodayWWWBackup=www-*-$(date +"%Y%m%d").tar.gz
 #TodayDBBackup=db-*-$(date +"%Y%m%d").sql
 TodayDBBackup=db-*-$(date +"%Y%m%d").sql.gz
 OldWWWBackup=www-*-$(date -d -3day +"%Y%m%d").tar.gz
-#OldDBBackup=db-*-$(date -d -3day +"%Y%m%d").sql
 OldDBBackup=db-*-$(date -d -3day +"%Y%m%d").sql.gz
 
 Backup_Dir()
