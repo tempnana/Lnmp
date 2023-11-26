@@ -65,11 +65,13 @@ fi
 
 echo "Backup website files..."
 for dd in ${Backup_Dir[@]};do
+    echo "Backup website : ${dd} ..."
     Backup_Dir ${dd}
 done
 
 echo "Backup Databases..."
 for db in ${Backup_Database[@]};do
+    echo "Backup Databases : ${db} ..."
     Backup_Sql ${db}
 done
 
