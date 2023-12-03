@@ -15,7 +15,7 @@ if [ -f /etc/debian_version ]; then
 elif [ -f /etc/centos-release ]; then
     update_install() {
         yum update -y && yum upgrade -y
-        yum install curl wget ufw net-tools iftop zip unzip git epel-release lsof -y
+        yum install epel-release curl wget ufw net-tools iftop zip unzip git lsof -y
         echo 'v /tmp 1777 root root 3d' >/etc/tmpfiles.d/custom-tmp.conf
         systemd-tmpfiles --clean >/dev/null 2>&1 &
     }
