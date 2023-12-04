@@ -3,6 +3,8 @@
 #Author: https://github.com/tempnana
 #Source: https://github.com/lnmpkvemail/lnmp
 ###############
+rM=$(($RANDOM % 59))
+rH=$(($RANDOM % 12))
 if [ -f /etc/debian_version ]; then
     update_install() {
         apt update && apt upgrade -y
@@ -94,13 +96,12 @@ ufw --force enable
 ufw status verbose
 
 # # set crontab
-rM=$(($RANDOM % 59))
-rH=$(($RANDOM % 12))
 set_crontab
 
 # # deny ip:80
 echo "deny ip:80..."
+wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/nginx.conf -O /usr/local/nginx/conf/nginx.conf
 local_ip=$(hostname -I | awk '{print $1}')
-sed -i "s#server_name _;#server_name ${local_ip};\n return 444;#g" /usr/local/nginx/conf/nginx.conf
+sed -i "s#server_name _;#server_name ${local_ip};#g" /usr/local/nginx/conf/nginx.conf
 
 lnmp restart
