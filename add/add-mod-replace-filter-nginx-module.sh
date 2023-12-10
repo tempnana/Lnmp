@@ -18,8 +18,16 @@ if [ ! -f "libsregex.so.0" ];then
   exit
 fi
 ls
+
 #ldd $(which /usr/sbin/nginx)
-cp /root/lnmp2.0/src-c/sregex/libsregex.so.0 /lib/x86_64-linux-gnu/
+if [ -f /etc/debian_version ]; then
+    cp /root/lnmp2.0/src-c/sregex/libsregex.so.0 /lib/x86_64-linux-gnu/
+elif [ -f /etc/centos-release ]; then
+    cp /root/lnmp2.0/src-c/sregex/libsregex.so.0 /usr/lib64
+else
+    echo "Unsupported distribution."
+fi
+
 sleep 5s
 #get replace-filter-nginx-module
 cd /root/lnmp2.0/src-c
