@@ -19,7 +19,7 @@ if [ ! -f "libsregex.so.0" ];then
 fi
 ls
 
-#ldd $(which /usr/sbin/nginx)
+#ldd $(which /usr/local/nginx/sbin/nginx)
 if [ -f /etc/debian_version ]; then
     cp /root/lnmp2.0/src-c/sregex/libsregex.so.0 /lib/x86_64-linux-gnu/
 elif [ -f /etc/centos-release ]; then
