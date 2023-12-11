@@ -104,4 +104,11 @@ wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/nginx.conf -O /
 local_ip=$(hostname -I | awk '{print $1}')
 sed -i "s#server_name _;#server_name ${local_ip};#g" /usr/local/nginx/conf/nginx.conf
 
+# # set mysql directory
+if [[ -f /etc/cnf ]]; then
+mkdir /home/dataroot
+cp -R /usr/local/mysql/var /home/dataroot
+wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/my.cnf -O /etc/cnf
+fi
+
 lnmp restart
