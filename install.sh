@@ -88,14 +88,35 @@ install_lnmp() {
 }
 
 set_ufw() {
-    # # set ufw
-    #Default set: deny all IN and allow all OUT
-    ufw default deny incoming
-    ufw default allow outgoing
-    ufw allow ssh
-    ufw allow 80
-    ufw --force enable
-    ufw status verbose
+    if [ -f /etc/centos-release ]; then
+        if systemctl list-unit-files | grep -qw firewalld.service; then
+            echo "Disable firewalld ..."
+            sleep 3
+            systemctl stop firewalld
+            systemctl disable firewalld
+            systemctl mask firewalld
+            systemctl status firewalld
+            sleep 3
+        fi
+        ufw default deny incoming
+        ufw default allow outgoing
+        ufw allow ssh
+        ufw allow 80
+        ufw --force enable
+        ufw status verbose
+        wget https://raw.githubusercontent.com/tempnana/Lnmp/main/add/etc/init.d/autoufw -O /etc/init.d/autoufw
+        chmod +x /etc/init.d/autoufw
+        chkconfig --add autoufw
+        chkconfig autoufw on
+
+    else
+        ufw default deny incoming
+        ufw default allow outgoing
+        ufw allow ssh
+        ufw allow 80
+        ufw --force enable
+        ufw status verbose
+    fi
 }
 
 deny_ip_access() {
