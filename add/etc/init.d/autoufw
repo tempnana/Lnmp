@@ -1,0 +1,18 @@
+#!/bin/sh
+### BEGIN INIT INFO
+
+# chkconfig: 2345 90 10
+# Description: Startup script for nginx webserver on Debian. Place in /etc/init.d and
+# run 'update-rc.d -f nginx defaults', or use the appropriate command on your
+# distro. For CentOS/Redhat run: 'chkconfig --add autoufw'
+# centos
+# chmod +x /etc/init.d/autoufw
+# chkconfig --add autoufw
+# chkconfig autoufw on
+# chkconfig autoufw off
+
+### END INIT INFO
+sleep 10
+ufw --force enable
+exit 0
+
