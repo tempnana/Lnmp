@@ -134,6 +134,7 @@ change_mysql_directory() {
         cp -R /usr/local/mysql/var /home/dataroot
         chown -R mysql:mysql /home/dataroot
         chmod -R 755 /home/dataroot
+        cp /etc/cnf /etc/cnf.bak
         wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/my.cnf -O /etc/cnf
     else
         echo 'MySQL is not install.'
