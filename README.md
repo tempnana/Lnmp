@@ -9,7 +9,7 @@ bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/install.sh
 </pre>
 <br>
 <br>
-<h2>Add</h2>
+<!-- <h2>Add</h2>
 <hr>
 <pre>
 cd /usr/local
@@ -25,7 +25,7 @@ sed -i "s:Nginx_Modules_Options='':Nginx_Modules_Options='--add-module=/usr/loca
 #Enter a new Nginx verson number
 #http://nginx.org/
 </pre>
-<br>
+<br> -->
 <h2>Source</h2>
 <hr>
 https://github.com/licess/lnmp
