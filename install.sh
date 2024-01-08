@@ -141,6 +141,16 @@ change_mysql_directory() {
     fi
 }
 
+change_php_ini() {
+    # # set mysql directory
+    if [[ -f /usr/local/php/etc/php.ini ]]; then
+        cp /usr/local/php/etc/php.ini /usr/local/php/etc/php.ini.bak
+        wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/php.ini -O /usr/local/php/etc/php.ini
+    else
+        echo 'PHP is not install.'
+    fi
+}
+
 # # install
 update_install
 get_source_file
@@ -152,5 +162,6 @@ set_crontab
 set_ufw
 deny_ip_access
 change_mysql_directory
+change_php_ini
 
 lnmp restart
