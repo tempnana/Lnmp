@@ -4,7 +4,7 @@
 #Source: https://github.com/lnmpkvemail/lnmp
 ###############
 rM=$(($RANDOM % 59))
-rH=$(($RANDOM % 12))
+rH=$(($RANDOM % 11))
 # # Check system
 if [ -f /etc/debian_version ]; then
     update_install() {
