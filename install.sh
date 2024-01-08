@@ -129,13 +129,13 @@ deny_ip_access() {
 
 change_mysql_directory() {
     # # set mysql directory
-    if [[ -f /etc/cnf ]]; then
+    if [[ -f /etc/my.cnf ]]; then
         mkdir /home/dataroot
         cp -R /usr/local/mysql/var /home/dataroot
         chown -R mysql:mysql /home/dataroot
         chmod -R 755 /home/dataroot
-        cp /etc/cnf /etc/cnf.bak
-        wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/my.cnf -O /etc/cnf
+        cp /etc/my.cnf /etc/my.cnf.bak
+        wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/my.cnf -O /etc/my.cnf
     else
         echo 'MySQL is not install.'
     fi
