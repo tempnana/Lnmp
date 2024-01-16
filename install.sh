@@ -29,7 +29,8 @@ elif [ -f /etc/centos-release ]; then
         echo '#'$((rM)) $((rH)) "* * * /sbin/reboot" >>/var/spool/cron/root && /sbin/service crond start
     }
 else
-    echo "Unsupported distribution."
+    echo "This install script only support Debian or CentOS."
+    exit
 fi
 
 get_source_file() {
