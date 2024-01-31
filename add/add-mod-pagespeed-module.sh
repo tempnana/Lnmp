@@ -4,6 +4,8 @@
 #Source: https://www.modpagespeed.com/doc/build_ngx_pagespeed_from_source
 #Note: Support last nginx version is 1.22.1
 #bash <(wget -qO- https://raw.githubusercontent.com/tempnana/Lnmp/main/add/add-mod-pagespeed-module.sh)
+
+cd /root
 ###############
 update_DEBIAN() {
     apt update && apt upgrade -y
