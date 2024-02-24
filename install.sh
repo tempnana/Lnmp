@@ -101,11 +101,12 @@ set_ufw() {
             systemctl status firewalld
             sleep 3
         fi
+        ufw --force enable
         ufw default deny incoming
         ufw default allow outgoing
         ufw allow ssh
-        ufw allow 80
-        ufw --force enable
+        ufw allow http
+        ufw allow https
         ufw status verbose
         wget https://raw.githubusercontent.com/tempnana/Lnmp/main/add/etc/init.d/autoufw -O /etc/init.d/autoufw
         chmod +x /etc/init.d/autoufw
@@ -113,12 +114,16 @@ set_ufw() {
         chkconfig autoufw on
 
     else
+        ufw --force enable
         ufw default deny incoming
         ufw default allow outgoing
         ufw allow ssh
-        ufw allow 80
-        ufw --force enable
+        ufw allow http
+        ufw allow https
         ufw status verbose
+        systemctl disable netfilter-persistent
+        systemctl start ufw
+        systemctl enable ufw
     fi
 }
 
