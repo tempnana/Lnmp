@@ -6,6 +6,7 @@
 rM=$(($RANDOM % 59))
 rH=$(($RANDOM % 11))
 \cp /etc/hosts /etc/hosts.bak
+mkdir /home/cacheroot
 
 # # Check system
 if [ -f /etc/debian_version ]; then
