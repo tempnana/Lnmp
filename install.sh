@@ -12,7 +12,7 @@ mkdir /home/cacheroot
 if [ -f /etc/debian_version ]; then
     update_install() {
         apt update && apt upgrade -y
-        apt install curl wget zip unzip git lsof ufw net-tools iftop rsync -y
+        apt install curl wget zip unzip git lsof ufw net-tools iftop rsync luarocks -y
     }
     set_crontab() {
         echo '#/etc/init.d/cron restart' >>/var/spool/cron/crontabs/root
@@ -21,7 +21,7 @@ if [ -f /etc/debian_version ]; then
 elif [ -f /etc/centos-release ]; then
     update_install() {
         yum update -y && yum upgrade -y
-        yum install epel-release curl wget zip unzip git lsof ufw net-tools iftop rsync -y
+        yum install epel-release curl wget zip unzip git lsof ufw net-tools iftop rsync luarocks -y
         echo 'v /tmp 1777 root root 3d' >/etc/tmpfiles.d/custom-tmp.conf
         systemd-tmpfiles --clean >/dev/null 2>&1 &
     }
