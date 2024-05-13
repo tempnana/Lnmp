@@ -8,9 +8,11 @@ install_luajit() {
     if ! command -v luajit &>/dev/null; then
         echo "LuaJIT could not be found."
         echo "Install luajit2-2.1-20230119..."
-        cd /root/lnmp2.0/src
-        gzip -d luajit2-2.1-20230119.tar.gz
-        tar -xf luajit2-2.1-20230119.tar
+        if [[ ! -d "/root/lnmp2.0/src/luajit2-2.1-20230119" ]]; then
+            cd /root/lnmp2.0/src
+            gzip -d luajit2-2.1-20230119.tar.gz
+            tar -xf luajit2-2.1-20230119.tar
+        fi
         cd /root/lnmp2.0/src/luajit2-2.1-20230119
         make
         sleep 5
