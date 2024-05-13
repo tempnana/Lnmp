@@ -9,6 +9,7 @@ install_luajit() {
         echo "LuaJIT could not be found."
         echo "Install luajit2-2.1-20230119..."
         cd /root/lnmp2.0/src
+        gzip -d luajit2-2.1-20230119.tar.gz
         tar -xf luajit2-2.1-20230119.tar
         cd /root/lnmp2.0/src/luajit2-2.1-20230119
         make
