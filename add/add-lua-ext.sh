@@ -5,29 +5,29 @@
 ###############
 
 install_luajit() {
-    if ! command -v luajit &>/dev/null; then
-        echo "LuaJIT could not be found."
-        echo "Install luajit2-2.1-20230119..."
-        if [[ ! -d "/root/lnmp2.0/src/luajit2-2.1-20230119" ]]; then
-            cd /root/lnmp2.0/src
-            gzip -d luajit2-2.1-20230119.tar.gz
-            tar -xf luajit2-2.1-20230119.tar
-        fi
-        cd /root/lnmp2.0/src/luajit2-2.1-20230119
-        make
-        sleep 5
-        make install
-        luajit -v
-    else
-        luajit -v
+    echo "LuaJIT could not be found."
+    echo "Install luajit2-2.1-20230119..."
+    if [[ ! -d "/root/lnmp2.0/src/luajit2-2.1-20230119" ]]; then
+        cd /root/lnmp2.0/src
+        gzip -d luajit2-2.1-20230119.tar.gz
+        tar -xf luajit2-2.1-20230119.tar
     fi
+    cd /root/lnmp2.0/src/luajit2-2.1-20230119
+    make
+    sleep 5
+    make install
+    luajit -v
 }
 install_luarocks() {
-    if ! command -v luarocks &>/dev/null; then
-        apt install luarocks -y
-        luarocks install lua-cjson
-    fi
+    apt install luarocks -y
+    luarocks install lua-cjson
 }
 
-install_luajit
-install_luarocks
+if ! command -v luajit &>/dev/null; then
+    install_luajit
+else
+    luajit -v
+fi
+if ! command -v luarocks &>/dev/null; then
+    install_luarocks
+fi
