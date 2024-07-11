@@ -25,9 +25,10 @@ install_luarocks() {
 
 if ! command -v luajit &>/dev/null; then
     install_luajit
+    install_luarocks
 else
     luajit -v
 fi
-if ! command -v luarocks &>/dev/null; then
-    install_luarocks
-fi
+# if ! command -v luarocks &>/dev/null; then
+#     install_luarocks
+# fi
