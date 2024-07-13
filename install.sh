@@ -46,7 +46,8 @@ fi
 get_source_file() {
     cd /root
     # # get script file
-    wget https://github.com/tempnana/Lnmp/raw/main/lnmp2.0.1.tar.gz -cO lnmp2.0.1.tar.gz && tar zxf lnmp2.0.1.tar.gz
+    # wget https://github.com/tempnana/Lnmp/raw/main/lnmp2.0.1.tar.gz -cO lnmp2.0.1.tar.gz && tar zxf lnmp2.0.1.tar.gz
+    get_install_tar
     # # get module file
     mkdir /root/lnmp2.0/src-c
     cd /root/lnmp2.0/src-c
