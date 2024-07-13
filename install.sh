@@ -3,7 +3,15 @@
 #Author: https://github.com/tempnana
 #Source: https://github.com/lnmpkvemail/lnmp
 ###############
-CheckMirror="n"
+CheckIinstallType="$1"
+get_install_tar() {
+    if [ "${CheckIinstallType}" = "offline" ]; then
+        CheckMirror="n"
+        wget https://src-lnmp.worw.org/soft.lnmp.com/lnmp/lnmp2.0-full.tar.gz -cO lnmp2.0-full.tar.gz && tar zxf lnmp2.0-full.tar.gz && mv lnmp2.0-full lnmp2.0
+    else
+        wget https://github.com/tempnana/Lnmp/raw/main/lnmp2.0.1.tar.gz -cO lnmp2.0.1.tar.gz && tar zxf lnmp2.0.1.tar.gz
+    fi
+}
 rM=$(($RANDOM % 59))
 rH=$(($RANDOM % 11))
 \cp /etc/hosts /etc/hosts.bak
