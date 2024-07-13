@@ -136,19 +136,19 @@ deny_ip_access() {
     sed -i "s#server_name _;#server_name ${local_ip};#g" /usr/local/nginx/conf/nginx.conf
 }
 
-change_mysql_directory() {
-    # # set mysql directory
-    if [[ -f /etc/my.cnf ]]; then
-        mkdir /home/dataroot
-        cp -R /usr/local/mysql/var /home/dataroot
-        chown -R mysql:mysql /home/dataroot
-        chmod -R 755 /home/dataroot
-        cp /etc/my.cnf /etc/my.cnf.bak
-        wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/my.cnf -O /etc/my.cnf
-    else
-        echo 'MySQL is not install.'
-    fi
-}
+# change_mysql_directory() {
+#     # # set mysql directory
+#     if [[ -f /etc/my.cnf ]]; then
+#         mkdir /home/dataroot
+#         cp -R /usr/local/mysql/var /home/dataroot
+#         chown -R mysql:mysql /home/dataroot
+#         chmod -R 755 /home/dataroot
+#         cp /etc/my.cnf /etc/my.cnf.bak
+#         wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/my.cnf -O /etc/my.cnf
+#     else
+#         echo 'MySQL is not install.'
+#     fi
+# }
 
 change_php_ini() {
     # # set mysql directory
@@ -170,7 +170,7 @@ install_lnmp
 set_crontab
 set_ufw
 deny_ip_access
-change_mysql_directory
+# change_mysql_directory
 change_php_ini
 
 # # done
