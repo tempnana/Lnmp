@@ -3,13 +3,14 @@
 #Author: https://github.com/tempnana
 #Source: https://github.com/lnmpkvemail/lnmp
 ###############
+lnmp_ver="2.0"
 CheckIinstallType="$1"
 get_install_tar() {
     if [ "${CheckIinstallType}" = "offline" ]; then
         CheckMirror="n"
-        wget https://src-lnmp.worw.org/soft.lnmp.com/lnmp/lnmp2.0-full.tar.gz -cO lnmp2.0-full.tar.gz && tar zxf lnmp2.0-full.tar.gz && mv lnmp2.0-full lnmp2.0
+        wget https://src-lnmp.worw.org/soft.lnmp.com/lnmp/lnmp${lnmp_ver}-full.tar.gz -cO lnmp${lnmp_ver}-full.tar.gz && tar zxf lnmp${lnmp_ver}-full.tar.gz && mv lnmp${lnmp_ver}-full lnmp${lnmp_ver}
     else
-        wget https://github.com/tempnana/Lnmp/raw/main/lnmp2.0.1.tar.gz -cO lnmp2.0.1.tar.gz && tar zxf lnmp2.0.1.tar.gz
+        wget https://github.com/tempnana/Lnmp/raw/main/lnmp${lnmp_ver}.1.tar.gz -cO lnmp${lnmp_ver}.1.tar.gz && tar zxf lnmp${lnmp_ver}.1.tar.gz
     fi
 }
 rM=$(($RANDOM % 59))
@@ -46,11 +47,11 @@ fi
 get_source_file() {
     cd /root
     # # get script file
-    # wget https://github.com/tempnana/Lnmp/raw/main/lnmp2.0.1.tar.gz -cO lnmp2.0.1.tar.gz && tar zxf lnmp2.0.1.tar.gz
+    # wget https://github.com/tempnana/Lnmp/raw/main/lnmp${lnmp_ver}.1.tar.gz -cO lnmp${lnmp_ver}.1.tar.gz && tar zxf lnmp${lnmp_ver}.1.tar.gz
     get_install_tar
     # # get module file
-    mkdir /root/lnmp2.0/src-c
-    cd /root/lnmp2.0/src-c
+    mkdir /root/lnmp${lnmp_ver}/src-c
+    cd /root/lnmp${lnmp_ver}/src-c
     # git clone https://github.com/FRiCKLE/ngx_cache_purge
     # git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
     # git clone https://github.com/openresty/headers-more-nginx-module
@@ -62,16 +63,16 @@ get_source_file() {
     git clone https://github.com/tempnana/nginx_upstream_check_module
     git clone https://github.com/tempnana/ngx_http_lower_upper_case
     # # set replace
-    wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/fail2ban.sh -O /root/lnmp2.0/tools
-    wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/version.sh -O /root/lnmp2.0/include/version.sh
-    wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/nginx.sh -O /root/lnmp2.0/include/nginx.sh
-    wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/upgrade_nginx.sh -O /root/lnmp2.0/include/upgrade_nginx.sh
-    wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/lnmp.conf -O /root/lnmp2.0/lnmp.conf
+    wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/fail2ban.sh -O /root/lnmp${lnmp_ver}/tools
+    wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/version.sh -O /root/lnmp${lnmp_ver}/include/version.sh
+    wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/nginx.sh -O /root/lnmp${lnmp_ver}/include/nginx.sh
+    wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/upgrade_nginx.sh -O /root/lnmp${lnmp_ver}/include/upgrade_nginx.sh
+    wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/lnmp.conf -O /root/lnmp${lnmp_ver}/lnmp.conf
 }
 
 install_fail2ban() {
     # # install fail2ban
-    cd /root/lnmp2.0/tools
+    cd /root/lnmp${lnmp_ver}/tools
     echo "Install fail2ban..."
     . fail2ban.sh
     sleep 5s
@@ -79,7 +80,7 @@ install_fail2ban() {
 
 install_lnmp() {
     # # install lnmp
-    cd /root/lnmp2.0
+    cd /root/lnmp${lnmp_ver}
     chmod +x *.sh
     echo "Choose install:"
     echo ""
