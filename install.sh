@@ -3,6 +3,7 @@
 #Author: https://github.com/tempnana
 #Source: https://github.com/lnmpkvemail/lnmp
 ###############
+CheckMirror="n"
 rM=$(($RANDOM % 59))
 rH=$(($RANDOM % 11))
 \cp /etc/hosts /etc/hosts.bak
