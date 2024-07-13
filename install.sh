@@ -41,11 +41,16 @@ get_source_file() {
     # # get module file
     mkdir /root/lnmp2.0/src-c
     cd /root/lnmp2.0/src-c
-    git clone https://github.com/FRiCKLE/ngx_cache_purge
-    git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
-    git clone https://github.com/openresty/headers-more-nginx-module
-    git clone https://github.com/yaoweibin/nginx_upstream_check_module
-    git clone https://github.com/replay/ngx_http_lower_upper_case
+    # git clone https://github.com/FRiCKLE/ngx_cache_purge
+    # git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
+    # git clone https://github.com/openresty/headers-more-nginx-module
+    # git clone https://github.com/yaoweibin/nginx_upstream_check_module
+    # git clone https://github.com/replay/ngx_http_lower_upper_case
+    git clone https://github.com/tempnana/ngx_cache_purge
+    git clone https://github.com/tempnana/ngx_http_substitutions_filter_module
+    git clone https://github.com/tempnana/headers-more-nginx-module
+    git clone https://github.com/tempnana/nginx_upstream_check_module
+    git clone https://github.com/tempnana/ngx_http_lower_upper_case
     # # set replace
     wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/fail2ban.sh -O /root/lnmp2.0/tools
     wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/version.sh -O /root/lnmp2.0/include/version.sh
