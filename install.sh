@@ -8,7 +8,7 @@ CheckIinstallType="$1"
 get_install_tar() {
     if [ "${CheckIinstallType}" = "offline" ]; then
         CheckMirror="n"
-        wget https://src-lnmp.worw.org/soft.lnmp.com/lnmp/lnmp${lnmp_ver}-full.tar.gz -cO lnmp${lnmp_ver}-full.tar.gz && tar zxf lnmp${lnmp_ver}-full.tar.gz && mv lnmp${lnmp_ver}-full lnmp${lnmp_ver}
+        wget https://github.com/jwsky/lnmp-full-safe/releases/download/publish/lnmp${lnmp_ver}-full.tar.gz -cO lnmp${lnmp_ver}-full.tar.gz && tar zxf lnmp${lnmp_ver}-full.tar.gz && mv lnmp${lnmp_ver}-full lnmp${lnmp_ver}
     else
         wget https://github.com/tempnana/Lnmp/raw/main/lnmp${lnmp_ver}.1.tar.gz -cO lnmp${lnmp_ver}.1.tar.gz && tar zxf lnmp${lnmp_ver}.1.tar.gz
     fi
