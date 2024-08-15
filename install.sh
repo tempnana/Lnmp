@@ -15,7 +15,9 @@ get_install_tar() {
     fi
 }
 rM=$(($RANDOM % 59))
-rH=$(($RANDOM % 11))
+# rH=$(($RANDOM % 11))
+hour_range=(5 6 7 13 14 15 21 22 23)
+rH=${hour_range[$RANDOM % ${#hour_range[@]}]}
 \cp /etc/hosts /etc/hosts.bak
 mkdir /home/cacheroot
 
