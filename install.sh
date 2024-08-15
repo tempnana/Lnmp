@@ -26,7 +26,7 @@ if [ -f /etc/debian_version ]; then
         apt install curl wget zip unzip git lsof ufw net-tools iftop -y
     }
     set_crontab() {
-        echo '#/etc/init.d/cron restart' >>/var/spool/cron/crontabs/root
+        # echo '#/etc/init.d/cron restart' >>/var/spool/cron/crontabs/root
         # echo '#'$((rM)) $((rH)) "* * * /sbin/reboot" >>/var/spool/cron/crontabs/root && /etc/init.d/cron restart
         (crontab -l; echo "#${rM} ${rH} * * * /sbin/reboot >> /root/test-date.txt") | crontab -
         (crontab -l; echo "#/etc/init.d/cron restart >> /root/test-date.txt") | crontab -
@@ -39,7 +39,7 @@ elif [ -f /etc/centos-release ]; then
         systemd-tmpfiles --clean >/dev/null 2>&1 &
     }
     set_crontab() {
-        echo '#/sbin/service crond start' >>/var/spool/cron/root
+        # echo '#/sbin/service crond start' >>/var/spool/cron/root
         # echo '#'$((rM)) $((rH)) "* * * /sbin/reboot" >>/var/spool/cron/root && /sbin/service crond start
         (crontab -l; echo "#${rM} ${rH} * * * /sbin/reboot >> /root/test-date.txt") | crontab -
         (crontab -l; echo "#/sbin/service crond start >> /root/test-date.txt") | crontab -
