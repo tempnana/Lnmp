@@ -27,7 +27,9 @@ if [ -f /etc/debian_version ]; then
     }
     set_crontab() {
         echo '#/etc/init.d/cron restart' >>/var/spool/cron/crontabs/root
-        echo '#'$((rM)) $((rH)) "* * * /sbin/reboot" >>/var/spool/cron/crontabs/root && /etc/init.d/cron restart
+        # echo '#'$((rM)) $((rH)) "* * * /sbin/reboot" >>/var/spool/cron/crontabs/root && /etc/init.d/cron restart
+        (crontab -l; echo "#${rM} ${rH} * * * /sbin/reboot >> /root/test-date.txt") | crontab -
+        (crontab -l; echo "#/etc/init.d/cron restart >> /root/test-date.txt") | crontab -
     }
 elif [ -f /etc/centos-release ]; then
     update_install() {
@@ -38,7 +40,9 @@ elif [ -f /etc/centos-release ]; then
     }
     set_crontab() {
         echo '#/sbin/service crond start' >>/var/spool/cron/root
-        echo '#'$((rM)) $((rH)) "* * * /sbin/reboot" >>/var/spool/cron/root && /sbin/service crond start
+        # echo '#'$((rM)) $((rH)) "* * * /sbin/reboot" >>/var/spool/cron/root && /sbin/service crond start
+        (crontab -l; echo "#${rM} ${rH} * * * /sbin/reboot >> /root/test-date.txt") | crontab -
+        (crontab -l; echo "#/sbin/service crond start >> /root/test-date.txt") | crontab -
     }
 else
     echo "This install script only support Debian or CentOS."
