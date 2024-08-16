@@ -1,0 +1,29 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          nginx_checker
+# Required-Start:    $network $syslog
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: Check if Nginx is listening on port 80
+# chmod +x /etc/init.d/nginx_checker
+# update-rc.d nginx_checker defaults
+### END INIT INFO
+
+# Sleep for 3 minutes to allow system services to start
+sleep 120
+
+# Function to check if port 80 is being listened by Nginx
+check_nginx() {
+    netstat -tuln | grep -q ":80 .*LISTEN"
+}
+
+# Check if port 80 is being listened
+if check_nginx; then
+    echo "Nginx is already running and listening on port 80."
+    exit 0
+else
+    echo "Nginx is not running. Starting Nginx..."
+    lnmp nginx start
+fi
+
