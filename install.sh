@@ -151,6 +151,19 @@ set_ufw() {
     fi
 }
 
+set_lnmp_checker() {
+    wget https://github.com/tempnana/Lnmp/blob/main/add/etc/init.d/lnmp_checker -O /etc/init.d/lnmp_checker
+    if [ -f /etc/centos-release ]; then
+        chmod +x /etc/init.d/lnmp_checker
+        chkconfig --add lnmp_checker
+        chkconfig lnmp_checker on
+
+    else
+        chmod +x /etc/init.d/lnmp_checker
+        update-rc.d lnmp_checker defaults
+    fi
+}
+
 deny_ip_access() {
     # # deny ip:80
     echo "deny ip:80..."
@@ -192,6 +205,7 @@ install_lnmp
 # # set
 set_crontab
 set_ufw
+set_lnmp_checker
 deny_ip_access
 change_mysql_cnf
 change_php_ini
