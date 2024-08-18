@@ -11,7 +11,7 @@
 ### END INIT INFO
 
 # Sleep for 3 minutes to allow system services to start
-sleep 120
+sleep 60
 
 # Function to check if port 80 is being listened by Nginx
 check_nginx() {
