@@ -25,7 +25,7 @@ mkdir /home/cacheroot
 if [ -f /etc/debian_version ]; then
     update_install() {
         apt update && apt upgrade -y
-        apt install curl wget zip unzip git lsof ufw net-tools iftop -y
+        apt install curl wget zip unzip git lsof ufw net-tools iftop rsync -y
     }
     set_crontab() {
         # echo '#/etc/init.d/cron restart' >>/var/spool/cron/crontabs/root
