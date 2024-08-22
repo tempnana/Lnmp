@@ -175,10 +175,10 @@ deny_ip_access() {
 change_mysql_cnf() {
     # # set mysql directory
     if [[ -f /etc/my.cnf ]]; then
-        # mkdir /home/dataroot
-        # cp -R /usr/local/mysql/var /home/dataroot
-        # chown -R mysql:mysql /home/dataroot
-        # chmod -R 755 /home/dataroot
+        mkdir /home/dataroot
+        cp -R /usr/local/mysql/var /home/dataroot
+        chown -R mysql:mysql /home/dataroot
+        chmod -R 755 /home/dataroot
         cp /etc/my.cnf /etc/my.cnf.bak
         wget https://raw.githubusercontent.com/tempnana/Lnmp/main/change/my.cnf -O /etc/my.cnf
     else
