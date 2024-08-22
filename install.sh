@@ -152,7 +152,7 @@ set_ufw() {
 }
 
 set_lnmp_checker() {
-    wget https://github.com/tempnana/Lnmp/blob/main/add/etc/init.d/lnmp_checker -O /etc/init.d/lnmp_checker
+    wget https://raw.githubusercontent.com/tempnana/Lnmp/main/add/etc/init.d/lnmp_checker -O /etc/init.d/lnmp_checker
     if [ -f /etc/centos-release ]; then
         chmod +x /etc/init.d/lnmp_checker
         chkconfig --add lnmp_checker
