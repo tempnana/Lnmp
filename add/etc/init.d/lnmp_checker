@@ -1,17 +1,17 @@
 #!/bin/bash
 ### BEGIN INIT INFO
 # Provides:          lnmp_checker
-# Required-Start:    $network $syslog
-# Required-Stop:
+# Required-Start:    $all
+# Required-Stop:     $all
 # Default-Start:     2 3 4 5
-# Default-Stop:
+# Default-Stop:      0 1 6
 # Short-Description: Check if Nginx is listening on port 80
+### END INIT INFO
 # chmod +x /etc/init.d/lnmp_checker
 # update-rc.d lnmp_checker defaults
-### END INIT INFO
 
-# Sleep for 3 minutes to allow system services to start
-sleep 60
+# Sleep for 30s to allow system services to start
+sleep 30
 
 # Function to check if port 80 is being listened by Nginx
 check_nginx() {
@@ -20,10 +20,9 @@ check_nginx() {
 
 # Check if port 80 is being listened
 if check_nginx; then
-    echo "Nginx is already running and listening on port 80."
+    echo "$(date) Nginx is already running and listening on port 80." >>/home/wwwlogs/lnmp_checker.log
     exit 0
 else
-    echo "Nginx is not running. Starting Nginx..."
+    echo "$(date) Nginx is not running. Starting Nginx..." >>/home/wwwlogs/lnmp_checker.log
     lnmp nginx start
 fi
-
